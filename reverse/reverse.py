@@ -39,4 +39,20 @@ class LinkedList:
         return False
 
     def reverse_list(self, node, prev):
-        pass
+
+        # error for empty
+        if node is None:
+            return
+        # Base case: when node.next_node is None swap rolls and return
+        if node.next_node is None:
+            self.head = node
+            node.next_node = prev
+            return
+
+        # (if Node is 1 Next node 2 it should pass revList (2, 1))
+        # need variables to hold node to pass
+
+        rev_node = node.next_node
+        # point node next node to prev which turns it around when code is hit
+        node.next_node = prev
+        self.reverse_list(rev_node, node)
